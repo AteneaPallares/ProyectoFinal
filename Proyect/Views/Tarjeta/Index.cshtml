@@ -1,0 +1,14 @@
+@{
+
+    ViewData["Title"] = "Obtener Dinero";
+
+}
+<div class="form-label-group">
+    <form asp-action="Validar" asp-controller="Tarjeta" method="POST" >
+         <label for="cantidad"><font size=5>Cantidad de dinero</font></label>
+        <input type="string" id="cantidad" name="cantidad"  class="form-control" required="" placeholder="Dolares">
+       <label for="tarjetanum"><font size=5>Número De Tarjeta de credito</font></label>
+       <input type="string" id="tarjetanum" name="tarjetanum"  class="form-control" required="" placeholder="Introduce la tarjeta de credito sin (-)">
+       <button style="background-color:crimson; width:200px; color:white;" class="btn btn-lg btn-primary btn-block" type="submit">Obtener Dinero</button>
+    </form>
+</div>

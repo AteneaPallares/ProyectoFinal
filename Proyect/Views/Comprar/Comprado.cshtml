@@ -1,0 +1,47 @@
+@model Dato
+@{
+
+    ViewData["Title"] = "Comprado";
+
+}
+<div>
+    @if(ViewBag.comprar==true){
+         <table class="table table-hover">
+      <thead>
+          <tr>
+              <td><b>Nombre</b></td>
+              <td><b>Marca</b></td>
+              <td><b>Precio</b></td>
+              <td><b>Id del Producto:</b></td>
+              <td><b>Tamaño:</b></td>
+              <td><b>Comprada:</b></td>
+              <td><b>Imagen</b></td>
+          </tr>
+      </thead>
+    @foreach(var items in ViewBag.lista){
+        @if(ViewBag.identidad==items.OwnerId){
+        <tr>
+            
+            <td>@items.Nombre</td>
+            <td>@items.Marca</td>
+            <td>@items.precio</td>
+             <td>@items.id_del_producto</td>
+             <td>@items.Tamano</td>
+             <td>@items.Comprada</td>
+             <td><img src="@items.imagen" /> </td>
+             
+        </tr>
+        }
+    }
+    </table>
+    }
+    else{
+        <img  src="~/images/sin_dinero.png" alt="#">
+         <form asp-action="Opcion" asp-controller="Comprar" method="post" >
+         <button style="background-color:crimson; width:200px; color:white;" class="btn btn-lg btn-primary btn-block" type="submit">Regresar</button>
+         </form>
+         <form style="background-color:crimson; width:200px; color:white;" asp-action="Index" asp-controller="Tarjeta" method="post" >
+         <button class="btn btn-lg btn-primary btn-block" type="submit">Obtener Dinero</button>
+         </form>
+    }
+</div>

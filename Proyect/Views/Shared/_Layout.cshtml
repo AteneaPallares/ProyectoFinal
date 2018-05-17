@@ -1,0 +1,79 @@
+﻿
+@using Microsoft.AspNetCore.Identity
+@using Proyect.Models
+@using Proyect.Controllers;
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Proyect</title>
+
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+</head>
+<body background="data:image/jpeg;base64,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">
+    <nav class="navbar navbar-inverse navbar-fixed-top"  style="background: url(http://fondosmovil.net/images/img7/imagenes-de-rosas-para-fondo-celular-en-hd-17.gif)">
+        <div class="container" style="background: url(http://fondosmovil.net/images/img7/imagenes-de-rosas-para-fondo-celular-en-hd-17.gif)">
+            <div class="navbar-header" style="background: url(http://fondosmovil.net/images/img7/imagenes-de-rosas-para-fondo-celular-en-hd-17.gif)">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a asp-area="" asp-controller="Comprar" asp-action="Opcion" class="navbar-brand">Ropa</a>
+            </div>
+            <div class="navbar-collapse collapse" style="background: url(http://fondosmovil.net/images/img7/imagenes-de-rosas-para-fondo-celular-en-hd-17.gif)">
+                <ul class="nav navbar-nav">
+                    @if(HomeController.activado==true){
+                    <li><a asp-area="" asp-controller="Comprar" asp-action="Opcion"><font size=3 color="#F7FE2E"><b>Catalogo</b></font></a></li>
+                    <li><a asp-area="" asp-controller="Comprar" asp-action="MisCompras"><font size=3 color="#F7FE2E"><b>Mis Compras</b></font></a></li>
+                    <li><a asp-area="" asp-controller="Tarjeta" asp-action="Index"><font size=3 color="#F7FE2E"><b>Conseguir Dinero</b></font></a></li>
+                    <li><a><font color="#40FF00" size=3><b>Dinero: @HomeController.dinero</b></font></a></li>
+                    }
+                </ul>
+                @await Html.PartialAsync("_LoginPartial")
+            </div>
+        </div>
+    </nav>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; 2018 - Proyect</p>
+        </footer>
+    </div>
+
+    <environment include="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous"
+                integrity="sha384-K+ctZQ+LL8q6tP7I94W+qzQsfRV2a+AfHIi9k8z8l9ggpc8X+Ytst4yBo/hH+8Fk">
+        </script>
+        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                crossorigin="anonymous"
+                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
+        </script>
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+    </environment>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

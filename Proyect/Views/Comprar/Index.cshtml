@@ -1,0 +1,44 @@
+@model Ropa
+@{
+    var d=ViewBag.lista;
+    var error=ViewBag.error;
+}
+@{
+
+    ViewData["Title"] = "Catalogo";
+
+}
+<div>
+    @if(error==false){
+    <font size=8 color="red"><center>Items</center></font>
+    @foreach(var y in d.items){
+    <form asp-action="Comprado" asp-controller="Comprar">
+    <div style="size:60px" ><img style="float: left; " src="@y.mediumImage" />  
+    <font color="green" size=5 ><b>Id del producto:  </b></font><font size=4> @y.itemId </font>
+    <br/>
+    <font color="green" size=5>Precio: </font><font size=4> @y.salePrice </font>
+    <br/>
+    <font color="teal" size=5>Nombre: </font><font size=4> @y.name </font> <font color="teal" size=5>   Categoria:  </font><font size=4>  @y.categoryPath</font>
+    <br/>
+    <font color="green" size=5>Genero: </font><font size=4> @y.gender</font>
+    <br/>
+    <font color="blue" size=5>Descripcion:  </font><font size=4><b> @y.shortDescription </b></font>
+    <font color="blue" size=5>Marca:   </font><font size=4> @y.brandName    </font>
+    <font color="blue" size=5>Tamaño: </font><font size=4> @y.size  </font> <font size=5 color="blue">  Color:  @y.color </font>
+    <input type="hidden" id="Nombre" name="Nombre" value="@y.name">
+    <input type="hidden" id="Marca" name="Marca" value="@y.brandName">
+    <input type="hidden" id="precio" name="precio" value="@y.salePrice">
+    <input type="hidden" id="id_del_producto" name="id_del_producto" value="@y.itemId">
+    <input type="hidden" id="Tamano" name="Tamano" value="@y.size">
+    <input type="hidden" id="imagen" name="imagen" value="@y.thumbnailImage">
+    <br/>
+    <button style="background-color:darkgreen; width:200px; color:white;" class="btn btn-danger" type="submit">Comprar</button>
+    <br style="clear: left;"/>
+    </div>
+    </form>
+}}
+else{
+    
+<img  src="~/images/pagina_no_encontrada.jpg" alt="#">
+}
+</div>
